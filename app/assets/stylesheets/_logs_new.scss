@@ -1,0 +1,23 @@
+.logsnewWrap{
+  background-color: #e0fff7;
+  .top{
+
+  }
+  .main{
+    width: 700px;
+    background-color: #ffffff;
+    margin: auto;
+    .logs_form{
+      padding: 40px;
+      font-size: 14px;
+      .smallWrap{
+        padding-top: 20px;
+        border-bottom: solid 1px #bfbfbf;
+        h2{
+          font-size: 20px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
