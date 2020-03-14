@@ -1,0 +1,50 @@
+.logsshowWrap{
+  background-color: #e0fff7;
+  .header{
+    height: 50px;
+  }
+  .main{
+    background-color: #ffffff;
+    margin: 20px 50px 20px;
+    .divingInfo{
+      width: 100%;
+      display: flex;
+      .left{
+        width: 20%;
+      }
+      .center{
+        width: 60%;
+        &__point{
+          font-size: 30px;
+          text-align: center;
+        }
+      }
+      .right{
+        width: 20%;
+        .abreastBox{
+          width: 50%;
+        }
+        &__divingTime{
+          display: flex;
+        }
+        &__divingAir{
+          display: flex;
+        }
+      }
+
+    }
+
+    .mapInfo{
+      text-align: center;
+      &__img{
+        max-height: 400px;
+      }
+
+    }
+    
+  }
+  .footer{
+    height: 50px;
+  }
+
+}
