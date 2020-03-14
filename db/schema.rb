@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_03_11_161033) do
     t.time "exit_time"
     t.integer "entry_air"
     t.integer "exit_air"
-    t.integer "suits_type_id"
+    t.integer "suits_id"
     t.integer "suits_thickness"
     t.float "weight"
     t.string "tank_type"
