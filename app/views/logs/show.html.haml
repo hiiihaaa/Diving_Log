@@ -1,0 +1,43 @@
+.logsshowWrap
+  .header
+  .main
+    .placeInfo
+      .abreast
+        .d_date
+          = @log.d_date
+        .weather / 天気: #{@log.weather.name}
+        .temp / 気温:  #{@log.temp} ℃  /
+        .address
+          = @log.address
+        
+    .divingInfo
+      .left
+        
+      .center
+        .center__point
+          = @log.point
+      .right
+        .right__entry_method
+          entry: #{@log.entry_method}
+
+        .right__divingTime
+          .right__divingTime__entry.abreastBox
+            = @log.entry_time.strftime('%H:%M')
+          .right__divingTime__exit.abreastBox
+            = @log.exit_time.strftime('%H:%M')
+
+        .right__divingAir
+          .right__divingAir__entry.abreastBox
+            = @log.entry_air
+          .right__divingair__exit.abreastBox
+            = @log.exit_air
+
+
+        
+
+     
+
+    .mapInfo
+      = image_tag @log.map_file.to_s, alt: 'map', class: "mapInfo__img"
+    .equipmentInfo
+  .footer
