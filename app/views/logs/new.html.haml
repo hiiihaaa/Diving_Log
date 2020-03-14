@@ -1,0 +1,155 @@
+.logsnewWrap
+  .top
+  .main
+    = form_with(model: @log, local: true, class: "logs_form") do |f|
+      .livingThingInfo.smallWrap
+        %h2
+          メモ
+        .inputBox
+          .upper
+            .inputname 地図
+            .required 必須
+          = f.file_field :map_file
+        .inputBox
+          .upper
+            .inputname 写真
+            .required 必須
+          = f.fields_for :living_thing_imgs do |m|
+            = m.file_field :l_img_file
+        .inputBox
+          .upper
+            .inputname 生物・地形
+            .option 任意
+          = f.text_area :living_thing, placeholder: ""
+        .inputBox
+          .upper
+            .inputname コメント
+            .option 任意
+          = f.text_area :description, placeholder: "コメントを自由に書いてください"
+
+      .placeInfo.smallWrap
+        %h2
+          基本情報
+        .inputBox
+          .upper
+            .inputname 日付
+            .required 必須
+          = f.date_select :d_date, use_month_numbers: true
+        .inputBoxPair
+          .inputBox
+            .upper
+              .inputname 都道府県
+              .required 必須
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: '---'}, {class: ''}
+          .inputBox
+            .upper
+              .inputname 場所
+              .required 必須
+            = f.text_field :address, placeholder: "例) 伊豆市・富戸"
+        .weather_temp
+          .inputBoxPair
+            .inputBox
+              .upper
+                .inputname 天気
+                .option 任意
+              = f.collection_select :weather_id, Weather.all, :id, :name, {prompt: '---'}, {class: ''}
+            .inputBox
+              .upper
+                .inputname 気温
+                .option 任意
+              = f.text_field :temp
+      
+      .divingInfo.smallWrap
+        %h2
+          ダイビング情報
+        .inputBoxPair
+          .w_temp.inputBox
+            .upper
+              .inputname 水温
+              .option 任意
+            = f.text_field :w_temp
+          .visibility.inputBox
+            .upper
+              .inputname 透明度
+              .option 任意
+            = f.text_field :visibility
+          .current.inputBox
+            .upper
+              .inputname 流れ
+              .option 任意
+            = f.text_field :current
+
+        .divingNo.inputBox
+          .upper
+            .inputname ダイビングNo
+            .option 任意
+          = f.text_field :d_no
+        .inputBoxPair
+          .inputBox
+            .upper
+              .inputname ポイント
+              .option 必須
+            = f.text_field :point, placeholder: '例) 富戸ピラミッド'
+          .inputBox
+            .upper
+              .inputname boat/beach
+              .option 任意
+            = f.text_field :entry_method
+        .diving_time.inputBoxPair
+          .entry_time.inputBox
+            .upper
+              .inputname エントリー
+              .required 必須
+            = f.time_select :entry_time
+          .exit_time.inputBox
+            .upper
+              .inputname エキジット
+              .required 必須
+            = f.time_select :exit_time
+        .air.inputBoxPair
+          .entry_air.inputBox
+            .upper
+              .inputname 残圧in
+              .required 必須
+            = f.text_field :entry_air
+          .exit_air.inputBox
+            .upper
+              .inputname 残圧out
+              .required 必須
+            = f.text_field :exit_air
+
+      .equipmentInfo.smallWrap
+        %h2
+          装備
+        .suits_type.inputBox
+          .upper
+            .inputname スーツ
+            .required 必須
+          = f.collection_select :suits_type_id, Suits.all, :id, :name, {prompt: '---'}
+        .suits_thickness.inputBox
+          .upper
+            .inputname 厚さ
+            .required 必須
+          = f.text_field :suits_thickness
+        .weight.inputBox
+          .upper
+            .inputname 重り
+            .required 必須
+          = f.text_field :weight
+        .inputBoxPair
+          .inputBox
+            .upper
+              .inputname タンクの種類
+              .option 任意
+            = f.text_field :tank_type
+          .inputBox
+            .upper
+              .inputname タンクの容量
+              .option 任意
+            = f.text_field :tank_volume
+      = f.submit '登録', type: 'button', onclick: 'submit();'
+
+
+
+
+      

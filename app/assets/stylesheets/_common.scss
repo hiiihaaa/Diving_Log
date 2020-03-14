@@ -1,0 +1,23 @@
+.inputBoxPair{
+  display: flex;
+}
+.inputBox{
+  padding: 15px;
+  .upper{
+    display: flex;
+    margin-bottom: 5px;
+    .inputname{
+      font-weight: bold;
+    }
+    .required{
+      color: #ffffff;
+      background-color: #ff0000;
+      margin-left: 12px;
+    }
+    .option{
+      color: #ffffff;
+      background-color: #bfbfbf;
+      margin-left: 12px;
+    }
+  }
+}
