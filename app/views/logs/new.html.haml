@@ -125,7 +125,7 @@
           .upper
             .inputname スーツ
             .required 必須
-          = f.collection_select :suits_type_id, Suits.all, :id, :name, {prompt: '---'}
+          = f.collection_select :suits_id, Suits.all, :id, :name, {prompt: '---'}
         .suits_thickness.inputBox
           .upper
             .inputname 厚さ

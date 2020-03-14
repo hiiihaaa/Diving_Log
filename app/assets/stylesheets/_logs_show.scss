@@ -6,23 +6,53 @@
   .main{
     background-color: #ffffff;
     margin: 20px 50px 20px;
+    padding: 20px;
+    .abreastBox{
+      padding: 5px;
+      }
+    .placeInfo{
+      display: flex;
+    }
     .divingInfo{
       width: 100%;
       display: flex;
+      justify-content: center;
+      padding-top: 10px;
       .left{
-        width: 20%;
+        width: 240px;
+        .d_no{
+          font-size: 20px;
+          font-weight: bold;
+        }
+        .smallWrap{
+          display: flex;
+        }
       }
       .center{
-        width: 60%;
+        // width: 50%;
+        text-align: center;
+        padding:0 90px 0;
         &__point{
+          font-weight: bold;
           font-size: 30px;
           text-align: center;
         }
       }
       .right{
-        width: 20%;
+        width: 240px;
         .abreastBox{
-          width: 50%;
+          width: 110px;
+          padding: 5px;
+        }
+        .s_label{
+          line-height: 10px;
+          span{
+            background-color: #1096ff;
+            color: #ffffff;
+            font-size: 12px;
+            padding: 1px 4px 3px;
+            border-radius: 8px;
+          }
         }
         &__divingTime{
           display: flex;
@@ -37,11 +67,35 @@
     .mapInfo{
       text-align: center;
       &__img{
-        max-height: 400px;
+        height: 500px;
       }
-
     }
-    
+    .logInfo{
+      padding-top: 20px;
+      &__living_thing{
+        padding: 10px;
+        &__text{
+          // border: solid 1px #cccccc;
+          text-decoration: underline;
+        }
+      }
+      &__description{
+        padding: 10px;
+        &__text{
+          // border: solid 1px #cccccc;
+          text-decoration: underline;
+        }
+      }
+    }
+    .equipmentInfo{
+      border-top: solid 1px #cccccc;
+      padding-top: 20px;
+      &__itemBox{
+        padding: 10px 20px 0;
+        display: flex;
+      }
+    }
+  
   }
   .footer{
     height: 50px;
