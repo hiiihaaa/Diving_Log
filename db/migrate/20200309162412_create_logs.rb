@@ -2,6 +2,7 @@ class CreateLogs < ActiveRecord::Migration[5.2]
   def change
     create_table :logs do |t|
       t.string  :map_file
+      t.string  :diving_map
       t.string  :living_thing
       t.string  :description
 

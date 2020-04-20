@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2020_03_11_161033) do
 
   create_table "logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "map_file"
+    t.string "diving_map"
     t.string "living_thing"
     t.string "description"
     t.date "d_date"

@@ -1,21 +1,113 @@
 .logsnewWrap{
   background-color: #e0fff7;
   .top{
-
+    margin: auto;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
   }
   .main{
-    width: 700px;
+    width: 960px;
     background-color: #ffffff;
     margin: auto;
     .logs_form{
-      padding: 40px;
+      padding: 0 40px 40px 40px;
       font-size: 14px;
       .smallWrap{
         padding-top: 20px;
         border-bottom: solid 1px #bfbfbf;
+        .t_area{
+          width: 100%;
+          padding: 10px 0 0 10px;
+        }
         h2{
           font-size: 20px;
           font-weight: bold;
+        }
+        .mapContainer{
+          &__menu{
+            display: flex;
+            margin-top: 10px;
+            &__uploaderBox{
+              display: block;
+              width: 100px;
+              height: 20px;
+              text-align: center;
+              background-color: #a0fff3;
+              color: #555555;
+              border: solid 1px #3070ff;
+              border-radius: 5px;
+              #diving_map{
+                display:none;
+              }
+              #map_uploader{
+                display: none;
+              }
+            }
+          }
+          &__previewBox{
+            display: flex;
+            width: 850px;
+            height: 550px;
+            margin-top: 10px;
+            background-color: #fafafa;
+            border: solid 1px #999999;
+            &__preview{
+              z-index: 0;
+              position: absolute;
+              width: 850px;
+              text-align:center;
+              &__img{
+                max-width: 850px;
+                height: 550px;
+              }
+            }
+            &__canvas{
+              z-index: 1;
+              position: absolute;
+            }
+          }
+          #btn_clear{
+            width: 50px;
+            background-color: #a0fff3;
+            border: solid 1px #3070ff;
+            border-radius: 5px;
+            color: #555555;
+            text-align: center;
+          }
+        }
+        .imgContainer{
+          &__uploaderBox{
+            display: block;
+            width: 100px;
+            height: 20px;
+            text-align: center;
+            background-color: #a0fff3;
+            color: #555555;
+            border: solid 1px #3070ff;
+            border-radius: 5px;
+            #img_uploader{
+              display: none;
+            }
+          }
+          &__previews{
+            width: 100%;
+            height: 110px;
+            margin-top: 10px;
+            background-color: #fafafa;
+            display: flex;
+            overflow: auto;
+            &__previewBox{
+              text-align: center;
+              margin-right: 5px;
+              &__img{
+                height:80px;
+              }
+              &__delete_btn{
+                line-height: 21px;
+              }
+            }
+          }
         }
       }
     }
