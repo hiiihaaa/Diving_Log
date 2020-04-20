@@ -1,7 +1,7 @@
 .logsnewWrap
-  .top
+  .top ログ情報の記入
   .main
-    = form_with(model: @log, local: true, class: "logs_form") do |f|
+    = form_with(model: @log, local: true, class: "logs_form", id: "logs_form") do |f|
       .livingThingInfo.smallWrap
         %h2
           メモ
@@ -9,23 +9,39 @@
           .upper
             .inputname 地図
             .required 必須
-          = f.file_field :map_file
+          .mapContainer
+            .mapContainer__menu
+              = f.label :map_file, class: "mapContainer__menu__uploaderBox", for: "map_uploader" do
+                Mapの選択
+                = f.text_field :base64_map, id: "diving_map"
+                = f.file_field :map_file, id: "map_uploader"
+              = select_tag 'picture_switch', options_for_select({"エントリーポイント": 1, "コース記入": 2, "エキジットポイント": 3, "写真の貼り付け": 4}), id: 'picture_switch'
+              #btn_clear クリア
+            .mapContainer__previewBox
+              .mapContainer__previewBox__preview
+              %canvas.mapContainer__previewBox__canvas#map_canvas{width: "850", height: "550"}
         .inputBox
           .upper
             .inputname 写真
             .required 必須
-          = f.fields_for :living_thing_imgs do |m|
-            = m.file_field :l_img_file
+          .imgContainer
+            = f.fields_for :living_thing_imgs do |m|
+              = m.label :l_img_file, class: "imgContainer__uploaderBox", for: "img_uploader" do
+                写真の選択
+                = m.file_field :l_img_file, multiple: true, id: "img_uploader", name: "imgs[]", data: {no: 0}
+            .imgContainer__previews
+
+            
         .inputBox
           .upper
             .inputname 生物・地形
             .option 任意
-          = f.text_area :living_thing, placeholder: ""
+          = f.text_area :living_thing, placeholder: "出会った生き物 など", class: "t_area"
         .inputBox
           .upper
             .inputname コメント
             .option 任意
-          = f.text_area :description, placeholder: "コメントを自由に書いてください"
+          = f.text_area :description, placeholder: "コメントを自由に書いてください", class: "t_area"
 
       .placeInfo.smallWrap
         %h2
@@ -62,6 +78,11 @@
       .divingInfo.smallWrap
         %h2
           ダイビング情報
+        .divingNo.inputBox
+          .upper
+            .inputname ダイビングNo
+            .option 任意
+          = f.text_field :d_no
         .inputBoxPair
           .w_temp.inputBox
             .upper
@@ -78,12 +99,6 @@
               .inputname 流れ
               .option 任意
             = f.text_field :current
-
-        .divingNo.inputBox
-          .upper
-            .inputname ダイビングNo
-            .option 任意
-          = f.text_field :d_no
         .inputBoxPair
           .inputBox
             .upper
@@ -147,9 +162,4 @@
               .inputname タンクの容量
               .option 任意
             = f.text_field :tank_volume
-      = f.submit '登録', type: 'button', onclick: 'submit();'
-
-
-
-
-      
+      = f.submit '登録', type: "button", id: "create_log"#, disable: 'flse'
