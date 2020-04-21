@@ -1,0 +1,29 @@
+.logsindexWrap{
+  .main{
+    .logBox{
+      .userInfo{
+        display: flex;
+      }
+      .content{
+        &__top{
+        display: flex;
+        }
+        &__map{
+          &__preview{
+            width: 450px;
+          }
+        }
+        &__imgsContainer{
+          display: flex;
+          &__img{
+            height:70px;
+          }
+        }
+        &__description{
+        }
+      }
+    }
+
+
+  }
+}

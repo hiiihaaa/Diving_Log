@@ -1,4 +1,8 @@
 class LogsController < ApplicationController
+  def index
+    @logs = Log.all
+  end
+
   def new
     @log = Log.new
     @log.living_thing_imgs.build
@@ -18,7 +22,7 @@ class LogsController < ApplicationController
       end
       redirect_to log_path(@log.id)
     else
-      render action: 'new'
+      render action: 'index'
     end
     
   end
