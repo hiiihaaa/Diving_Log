@@ -1,29 +1,46 @@
 .logsindexWrap{
+  background-color: #a0fff3;
   .main{
+    width: 600px;
+    margin:auto;
     .logBox{
-      .userInfo{
-        display: flex;
-      }
-      .content{
-        &__top{
-        display: flex;
-        }
-        &__map{
-          &__preview{
-            width: 450px;
-          }
-        }
-        &__imgsContainer{
+      background-color: #ffffff;
+      text-align: center;
+      .loginnerBox{
+        width: 550px;
+        padding: 25px;
+        margin-bottom: 10px;
+        .userInfo{
           display: flex;
-          &__img{
-            height:70px;
-          }
         }
-        &__description{
+        .content{
+          &__top{
+            display: flex;
+            font-size: 11px;
+            color: #888888;
+            &__point{
+              color: #000000;
+              font-size: 16px;
+            }
+
+          }
+          &__map{
+            &__preview{
+              width:550px;
+            }
+          }
+          &__imgsContainer{
+            display: flex;
+            overflow: auto;
+            &__img{
+              height:70px;
+              margin-right:5px;
+            }
+          }
+          &__description{
+          }
         }
       }
     }
-
-
   }
 }

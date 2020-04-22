@@ -1,29 +1,30 @@
 
 .logBox
-  .userInfo
-    .userInfo__icon
-      ●
-    .userInfo__nickname
-      ニックネーム
-  .content
-    .content__top
-      .content__top__date
-        = log.d_date
-      .content__top__weather.abreastBox / 天気: #{log.weather.name}
-      .content__top__temp.abreastBox / 気温:  #{log.temp} ℃  /
-      .content__top__address.abreastBox
-        = log.address
+  .loginnerBox
+    .userInfo
+      .userInfo__icon
+        ●
+      .userInfo__nickname
+        ニックネーム
+    .content
+      .content__top
+        .content__top__date
+          = log.d_date
+        .content__top__weather.abreastBox / #{log.weather.name}
+        .content__top__temp.abreastBox / 水温:  #{log.w_temp} ℃  /
+        .content__top__address.abreastBox
+          = log.address
 
-      .content__top__point
-        = log.point
+        .content__top__point
+          = log.point
 
-    .content__map
-      = image_tag log.map_file.to_s, alt: 'map', class: "content__map__preview"
-    .content__imgsContainer
-      - log.living_thing_imgs.each do |img|
-        = image_tag img.l_img_file.to_s, alt: 'img', class: "content__imgsContainer__img"
+      .content__map
+        = image_tag log.map_file.to_s, alt: 'map', class: "content__map__preview"
+      .content__imgsContainer
+        - log.living_thing_imgs.each do |img|
+          = image_tag img.l_img_file.to_s, alt: 'img', class: "content__imgsContainer__img"
 
-    .content__description
-      = log.description
+      .content__description
+        = log.description
     
       
