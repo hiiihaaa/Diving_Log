@@ -1,0 +1,7 @@
+.logsindexWrap
+  .header
+  .main
+    = render partial: 'log', collection: @logs, as: 'log'
+  .footer
+    = link_to "投稿", new_log_path
+    
