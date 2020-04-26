@@ -3,9 +3,9 @@
   .loginnerBox
     .userInfo
       .userInfo__icon
-        ●
+        = image_tag log.user.photo.to_s, alt: 'photo', class: 'userInfo__icon__photo'
       .userInfo__nickname
-        ニックネーム
+        = log.user.nickname
     .content
       .content__top
         .content__top__date
@@ -25,6 +25,6 @@
           = image_tag img.l_img_file.to_s, alt: 'img', class: "content__imgsContainer__img"
 
       .content__description
-        = log.description
+        = safe_join(log.description.split("\n"),tag(:br))
     
       

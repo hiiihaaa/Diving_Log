@@ -34,7 +34,7 @@ class LogsController < ApplicationController
 
   private
   def log_params
-    params.require(:log).permit(:map_file, :living_thing, :description, :d_date, :weather_id, :temp, :prefecture_id, :address, :w_temp, :visibility, :current, :d_no, :point, :entry_method, :entry_time, :exit_time,  :entry_air, :exit_air, :suits_id, :suits_thickness, :weight, :tank_type, :tank_volume, living_thing_imgs_attributes: [:l_img_file])
+    params.require(:log).permit(:map_file, :living_thing, :description, :d_date, :weather_id, :temp, :prefecture_id, :address, :w_temp, :visibility, :current, :d_no, :point, :entry_method, :entry_time, :exit_time,  :entry_air, :exit_air, :suits_id, :suits_thickness, :weight, :tank_type, :tank_volume, living_thing_imgs_attributes: [:l_img_file]).merge(user_id: current_user.id)
   end
   def map_params
     params.require(:log).permit(:base64_map)
