@@ -1,0 +1,41 @@
+.usersnewWrap
+  .main
+    = form_with(model: @user, local: true) do |f|
+      = f.file_field :photo
+      .inputBox
+        .upper
+          .inputname ニックネーム
+          .required 必須
+        = f.text_field :nickname
+      
+      .inputBox
+        .upper
+          .inputname e-mail
+          .required 必須
+        = f.email_field :email, autofocus: true, autocomplete: "email"
+
+      .inputBox
+        .upper
+          .inputname 自己紹介
+          .required 任意
+        = f.text_area :self_introduction
+
+      .inputBox
+        .upper
+          .inputname
+            = f.label :password
+            - if @minimum_password_length
+              %em
+                (#{@minimum_password_length} characters minimum)
+                %br/
+                = f.password_field :password, autocomplete: "new-password"
+
+      .inputBox
+        .upper
+          .inputname
+            = f.label :password_confirmation
+            %br/
+            = f.password_field :password_confirmation, autocomplete: "new-password"
+      .actions
+        = f.submit class: "btn", value: "Sign up"
+    = render "users/shared/links"

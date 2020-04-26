@@ -1,10 +1,12 @@
 class CreateLogs < ActiveRecord::Migration[5.2]
   def change
     create_table :logs do |t|
+      t.integer :user_id
+
       t.string  :map_file
       t.string  :diving_map
       t.string  :living_thing
-      t.string  :description
+      t.text    :description
 
       t.date    :d_date
       t.string  :weather_id

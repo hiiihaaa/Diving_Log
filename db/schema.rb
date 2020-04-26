@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_11_161033) do
+ActiveRecord::Schema.define(version: 2020_04_25_025419) do
 
   create_table "living_thing_imgs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "log_id"
@@ -18,10 +18,11 @@ ActiveRecord::Schema.define(version: 2020_03_11_161033) do
   end
 
   create_table "logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
     t.string "map_file"
     t.string "diving_map"
     t.string "living_thing"
-    t.string "description"
+    t.text "description"
     t.date "d_date"
     t.string "weather_id"
     t.float "temp"
@@ -42,6 +43,24 @@ ActiveRecord::Schema.define(version: 2020_03_11_161033) do
     t.float "weight"
     t.string "tank_type"
     t.integer "tank_volume"
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "nickname", default: "", null: false
+    t.string "photo"
+    t.date "s_diving"
+    t.text "self_introduction"
+    t.integer "address"
+    t.integer "license"
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
