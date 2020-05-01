@@ -1,16 +1,7 @@
 .logsindexWrap
-  .header
-    - if user_signed_in?
-      .header1
-        = link_to "ログアウト", destroy_user_session_path, method: :delete
-    - else
-      .header1
-        = link_to "新規会員登録", resistration_user_path, method: :delete
-
-  
+  =render partial: '/shareParts/header'
   .main
     -if @logs
-      = render partial: 'log', collection: @logs, as: 'log'
-  .footer
-    = link_to "投稿", new_log_path
+      = render partial: '/shareParts/log', collection: @logs, as: 'log'
+
     

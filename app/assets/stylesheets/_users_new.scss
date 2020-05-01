@@ -1,7 +1,23 @@
-.usersnewWrap{
+.userRegistrationWrap{
   background-color: #a0fff3;
   .main{
+    padding: 40px 0 40px;
     width: 700px;
     margin: auto;
+    .smallWrap{
+      display: flex;
+    
+      .preview{
+        width: 200px;
+        #photo_uploader{
+          display: none;
+        }
+        &__icon{
+          // width:100px;
+          height: 100px;
+          border-radius: 50%;
+        }
+      }
+    }
   }
 }

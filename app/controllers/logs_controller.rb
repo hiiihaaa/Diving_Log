@@ -1,4 +1,5 @@
 class LogsController < ApplicationController
+  before_action :user_dummy
   def index
     @logs = Log.all
   end
@@ -20,9 +21,9 @@ class LogsController < ApplicationController
       params[:imgs].each do |img|
         @log.living_thing_imgs.create(log_id: @log.id, l_img_file: img)
       end
-      redirect_to log_path(@log.id)
+      redirect_to root_path
     else
-      render action: 'index'
+      render action: 'new'
     end
     
   end
@@ -38,5 +39,8 @@ class LogsController < ApplicationController
   end
   def map_params
     params.require(:log).permit(:base64_map)
+  end
+  def user_dummy
+    @user = User.new
   end
 end

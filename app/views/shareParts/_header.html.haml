@@ -1,0 +1,12 @@
+.share_header
+  .upper
+    = link_to 'Diving Log', root_path, class: 'upper__title'
+  .lower
+    - if user_signed_in?
+      = link_to "投稿", new_log_path, class: 'lower__header_btn', id: 'btn_post'
+      - if @user.id == current_user.id
+        =link_to 'ユーザー情報編集', edit_user_path, class: 'lower__header_btn'
+      = link_to "ログアウト", destroy_user_session_path, method: :delete, class:'lower__header_btn', id: 'btn_logout'
+    - else
+      = link_to "新規登録", new_user_registration_path, class:'lower__header_btn', id: 'btn_signup'
+      = link_to "ログイン", new_user_session_path, class:'lower__header_btn', id: ''
