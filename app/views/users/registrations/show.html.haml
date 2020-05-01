@@ -1,0 +1,22 @@
+.usersshowWrap
+  .header
+    = render partial: '/shareParts/header'
+  .main
+    .sideBar_userInfo
+      .sideBar_userInfo__top
+        = image_tag @user.photo.to_s, alt: '写真', class: 'sideBar_userInfo__top__photo'
+        = @user.nickname
+      .license
+        ライセンス
+      .yearsOfExperience
+        経験年数：
+        = @yearsOfExperience
+      .address
+        生息地:
+        = @user.prefecture.name
+      .comment
+        コメント
+      = safe_join(@user.self_introduction.split("\n"),tag(:br))
+
+    .logs
+      = render partial: '/shareParts/log', collection: @user_logs, as: 'log'

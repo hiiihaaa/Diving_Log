@@ -1,10 +1,11 @@
 .logsnewWrap
-  .top ログ情報の記入
+  .header
+    = render partial:'/shareParts/header'
   .main
     = form_with(model: @log, local: true, class: "logs_form", id: "logs_form") do |f|
       .livingThingInfo.smallWrap
         %h2
-          メモ
+          ログの記入
         .inputBox
           .upper
             .inputname 地図

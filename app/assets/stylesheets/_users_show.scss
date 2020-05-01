@@ -1,0 +1,33 @@
+.usersshowWrap{
+  background-color: #a0fff3;
+  .header{
+    width: 100%;
+    position: fixed;
+  }
+  .main{
+    margin: auto;
+    padding: 80px 0 30px;
+    display: flex;
+    justify-content: center;
+    .sideBar_userInfo{
+      position: fixed;
+      left: 0;
+      padding: 15px;
+      width:250px;
+      height: 100%;
+      background-color: #ffffff;
+      border-right: solid 5px #a0fff3;
+      &__top{
+        display: flex;
+        &__photo{
+          height: 80px;
+          border-radius: 50%;
+        }
+      }
+    }
+    .logs{
+      overflow: auto;
+      width: 650px;
+    }
+  }
+}

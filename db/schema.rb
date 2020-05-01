@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2020_04_25_025419) do
     t.string "photo"
     t.date "s_diving"
     t.text "self_introduction"
-    t.integer "address"
+    t.integer "prefecture_id"
     t.integer "license"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

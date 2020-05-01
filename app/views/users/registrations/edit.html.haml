@@ -1,36 +1,62 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div
-      Currently waiting confirmation for: #{resource.unconfirmed_email}
-  .field
-    = f.label :password
-    %i (leave blank if you don't want to change it)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-    - if @minimum_password_length
-      %br/
-      %em
-        = @minimum_password_length
-        characters minimum
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
-    = f.label :current_password
-    %i (we need your current password to confirm your changes)
-    %br/
-    = f.password_field :current_password, autocomplete: "current-password"
-  .actions
-    = f.submit "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-= link_to "Back", :back
+.userRegistrationWrap
+  = render partial: 'shareParts/header'
+  .main
+    = form_with(model: @user, local: true, url: update_user_path(@user)) do |f|
+      .smallWrap
+        .preview
+          = f.label :photo, class: 'upper', for: 'photo_uploader' do
+            .upper アイコンの選択
+            = f.file_field :photo, id: 'photo_uploader'
+            - if @user.photo.present?
+              = image_tag @user.photo.to_s, alt: "", class: "preview__icon"
+            - else
+              = image_tag "user-circle-solid.svg", alt: "", class: "preview__icon"
+        .inputBox
+          .upper
+            .inputname ニックネーム
+            .required 必須
+          = f.text_field :nickname
+      
+        .inputBox
+          .upper
+            .inputname e-mail
+            .required 必須
+          = f.email_field :email, autofocus: true, autocomplete: "email"
+
+      .smallWrap
+        .inputBox
+          .upper
+            .inputname 自己紹介
+            .option 任意
+          = f.text_area :self_introduction
+        .inputBox
+          .upper
+            .inputname ダイビングを始めた時期
+            .option 任意
+          != sprintf(f.date_select(:s_diving, with_css_classes:'', use_month_numbers:true, discard_day: true, date_separator:'%s'), "年 ") + "月" 
+        .inputBox
+          .upper
+            .inputname 生息地
+            .option 任意
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: '---'}, {class: ''}
+
+      .inputBox
+        .upper
+          .inputname
+            = f.label :password
+            - if @minimum_password_length
+              %em
+                (#{@minimum_password_length} characters minimum)
+                %br/
+                = f.password_field :password, autocomplete: "new-password"
+
+      .inputBox
+        .upper
+          .inputname
+            = f.label :password_confirmation
+            %br/
+            = f.password_field :password_confirmation, autocomplete: "new-password"
+      .actions
+        = f.submit class: "btn", value: "編集"
+    = render "users/shared/links"
+

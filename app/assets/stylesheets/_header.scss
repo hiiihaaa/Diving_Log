@@ -1,0 +1,29 @@
+.share_header{
+  background-color: #0000ff;
+  .upper{
+    padding: 5px;
+    text-align: center;
+    &__title{
+      color: #ffffff;
+      font-size: 25px;
+      font-weight: bold;
+      font-style: italic;
+
+    }
+  }
+  .lower{
+    padding-bottom: 10px;
+    justify-content: space-around;
+    display: flex;
+    &__header_btn{
+      display: block;
+      padding: 3px;
+      border: solid 2px #ccccff;
+      line-height: 12px;
+      background-color: #ffffff;
+      color: #000000;
+      border-radius: 3px;
+
+    }
+  }
+}
