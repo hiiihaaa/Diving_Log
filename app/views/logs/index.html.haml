@@ -1,5 +1,5 @@
 .logsindexWrap
-  =render partial: '/shareParts/header'
+  = render partial: '/shareParts/header'
   .main
     -if @logs
       = render partial: '/shareParts/log', collection: @logs, as: 'log'
