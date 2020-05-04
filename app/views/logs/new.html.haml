@@ -14,7 +14,6 @@
             .mapContainer__menu
               = f.label :map_file, class: "mapContainer__menu__uploaderBox", for: "map_uploader" do
                 Mapの選択
-                = f.text_field :base64_map, id: "diving_map"
                 = f.file_field :map_file, id: "map_uploader"
               = select_tag 'picture_switch', options_for_select({"エントリーポイント": 1, "コース記入": 2, "エキジットポイント": 3, "写真の貼り付け": 4}), id: 'picture_switch'
               #btn_clear クリア
@@ -163,4 +162,4 @@
               .inputname タンクの容量
               .option 任意
             = f.text_field :tank_volume
-      = f.submit '登録', type: "button", id: "create_log"#, disable: 'flse'
+      = f.submit '登録', type: "submit", id: "create_log"#, disable: 'flse'

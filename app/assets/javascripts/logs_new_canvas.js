@@ -75,16 +75,36 @@ $(document).on('turbolinks:load', function(){
       })
 
       // 書いた画像をデータとして送信
-      $("#create_log").on("click", function(e){
+      $("#logs_form").on("submit", function(e){
+        e.preventDefault();
+        var formData = new FormData($("#logs_form").get(0));
+        var url = $(this).attr('action')
+
         $(window).scrollTop(0)
         $(window).scrollLeft(0)
 
         html2canvas(target_box.get(0)).then(function(snapshot) {
-          var base64 = snapshot.toDataURL('image/jpeg')  //画像をスナップショット
-          $('#diving_map').get(0).value = base64         //画像dataをtextとして入力
-          $("#logs_form").submit()
+          var base64 = snapshot.toDataURL('image/jpeg')  //画像をスナップショット(base64)
+          var bin = atob(base64.replace(/^.*,/, ''));    //base64のデータ部デコード
+          var buffer = new Uint8Array(bin.length);
+          for (var i = 0; i < bin.length; i++) {
+            buffer[i] = bin.charCodeAt(i);
+          }
+          var test = new File([buffer.buffer], "map.jpeg", {type: "image/jpeg"}) // ファイルオブジェクト生成
+          formData.append("imgs[]", test)
+   
+          $.ajax({
+            url: url,
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: 'json'
+          })
+          .done(function(){
+            window.location.href = '/'
+          });
         })
-
       });
     }
   }
