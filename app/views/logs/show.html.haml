@@ -59,7 +59,10 @@
             %span.unit [kg/cm3]
 
     .mapInfo
-      = image_tag @log.map_file.to_s, alt: 'map', class: "mapInfo__img"
+      = image_tag @log.living_thing_imgs.find_by(l_img_file: "diving-map.jpeg").l_img_file.to_s, alt: 'map', class: "mapInfo__img"
+      .previews__imgsContainer
+        - @log.living_thing_imgs.each do |img|
+          = image_tag img.l_img_file.to_s, alt: 'img', class: "previews__imgsContainer__img"
 
     .logInfo
       .logInfo__living_thing
