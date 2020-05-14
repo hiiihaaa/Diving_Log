@@ -1,9 +1,8 @@
 $(document).on('turbolinks:load', function(){
-  if(document.URL.includes("logs/new")){
+  if (document.URL.includes("logs") && (document.URL.includes("new") || document.URL.includes("edit"))){
     var canvas = document.getElementById('map_canvas');
     var cnv = $('#map_canvas')
     var img_previews = $(".imgContainer__previews")
-    var target_box = $('.mapContainer__previewBox')
 
     if (canvas.getContext) {
       var ctx = canvas.getContext('2d');
@@ -73,39 +72,6 @@ $(document).on('turbolinks:load', function(){
       $("#btn_clear").on('click', function(){
         ctx.clearRect(0, 0, canvas.width, canvas.height)
       })
-
-      // 書いた画像をデータとして送信
-      $("#logs_form").on("submit", function(e){
-        e.preventDefault();
-        var formData = new FormData($("#logs_form").get(0));
-        var url = $(this).attr('action')
-
-        $(window).scrollTop(0)
-        $(window).scrollLeft(0)
-
-        html2canvas(target_box.get(0)).then(function(snapshot) {
-          var base64 = snapshot.toDataURL('image/jpeg')  //画像をスナップショット(base64)
-          var bin = atob(base64.replace(/^.*,/, ''));    //base64のデータ部デコード
-          var buffer = new Uint8Array(bin.length);
-          for (var i = 0; i < bin.length; i++) {
-            buffer[i] = bin.charCodeAt(i);
-          }
-          var test = new File([buffer.buffer], "map.jpeg", {type: "image/jpeg"}) // ファイルオブジェクト生成
-          formData.append("imgs[]", test)
-   
-          $.ajax({
-            url: url,
-            type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            dataType: 'json'
-          })
-          .done(function(){
-            window.location.href = '/'
-          });
-        })
-      });
     }
   }
 })

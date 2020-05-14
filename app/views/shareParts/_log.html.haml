@@ -18,7 +18,8 @@
           = log.point
 
       .content__map
-        = image_tag log.map_file.to_s, alt: 'map', class: 'content__map__preview'
+        - if log.living_thing_imgs.find_by(l_img_file: "diving-map.jpeg")
+          = image_tag log.living_thing_imgs.find_by(l_img_file: "diving-map.jpeg").l_img_file.to_s, alt: 'map', class: 'content__map__preview'
       .content__imgsContainer
         - log.living_thing_imgs.each do |img|
           = image_tag img.l_img_file.to_s, alt: 'img', class: "content__imgsContainer__img"
