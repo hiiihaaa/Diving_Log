@@ -3,6 +3,7 @@ class CreateLogs < ActiveRecord::Migration[5.2]
     create_table :logs do |t|
       t.integer :user_id
 
+      t.string  :diving_map
       t.string  :living_thing
       t.text    :description
 

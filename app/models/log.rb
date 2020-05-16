@@ -1,6 +1,7 @@
 class Log < ApplicationRecord
 
   has_many :living_thing_imgs
+  mount_uploader :diving_map, DivingMapUploader
   accepts_nested_attributes_for :living_thing_imgs
 
   belongs_to :user

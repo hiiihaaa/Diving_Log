@@ -1,0 +1,161 @@
+= form_with(model: @log, local: true, class: "logs_form", id: "logs_form") do |f|
+  .livingThingInfo.smallWrap
+    %h2
+      ログの記入
+    .inputBox
+      .upper
+        .inputname 地図
+        .required 必須
+      .mapContainer
+        .mapContainer__menu
+          = f.label :dummy, class: "mapContainer__menu__uploaderBox", for: "map_uploader" do
+            Mapの選択
+            = f.file_field :dummy, id: "map_uploader"
+          = select_tag 'picture_switch', options_for_select({"エントリーポイント": 1, "コース記入": 2, "エキジットポイント": 3, "写真の貼り付け": 4}), id: 'picture_switch'
+          #btn_clear クリア
+        .mapContainer__previewBox
+          .mapContainer__previewBox__preview
+            = image_tag "", alt: "", class: "mapContainer__previewBox__preview__img", id: "diving_map"
+            -# = image_tag "image-regular.svg", alt: "", class: "mapContainer__previewBox__preview__img"
+          %canvas.mapContainer__previewBox__canvas#map_canvas{width: "850", height: "550"}
+    .inputBox
+      .upper
+        .inputname 写真
+        .required 必須
+      .imgContainer
+        = f.label :dummy, class: "imgContainer__uploaderBox", for: "img_uploader" do
+          写真の選択
+          = f.file_field :dummy, id: "img_uploader"
+        .imgContainer__previews
+        
+    .inputBox
+      .upper
+        .inputname 生物・地形
+        .option 任意
+      = f.text_area :living_thing, placeholder: "出会った生き物 など", class: "t_area"
+    .inputBox
+      .upper
+        .inputname コメント
+        .option 任意
+      = f.text_area :description, placeholder: "コメントを自由に書いてください", class: "t_area"
+
+  .placeInfo.smallWrap
+    %h2
+      基本情報
+    .inputBox
+      .upper
+        .inputname 日付
+        .required 必須
+      = f.date_select :d_date, use_month_numbers: true
+    .inputBoxPair
+      .inputBox
+        .upper
+          .inputname 都道府県
+          .required 必須
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: '---'}, {class: ''}
+      .inputBox
+        .upper
+          .inputname 場所
+          .required 必須
+        = f.text_field :address, placeholder: "例) 伊豆市・富戸"
+    .weather_temp
+      .inputBoxPair
+        .inputBox
+          .upper
+            .inputname 天気
+            .option 任意
+          = f.collection_select :weather_id, Weather.all, :id, :name, {prompt: '---'}, {class: ''}
+        .inputBox
+          .upper
+            .inputname 気温
+            .option 任意
+          = f.text_field :temp
+  
+  .divingInfo.smallWrap
+    %h2
+      ダイビング情報
+    .divingNo.inputBox
+      .upper
+        .inputname ダイビングNo
+        .option 任意
+      = f.text_field :d_no
+    .inputBoxPair
+      .w_temp.inputBox
+        .upper
+          .inputname 水温
+          .option 任意
+        = f.text_field :w_temp
+      .visibility.inputBox
+        .upper
+          .inputname 透明度
+          .option 任意
+        = f.text_field :visibility
+      .current.inputBox
+        .upper
+          .inputname 流れ
+          .option 任意
+        = f.text_field :current
+    .inputBoxPair
+      .inputBox
+        .upper
+          .inputname ポイント
+          .option 必須
+        = f.text_field :point, placeholder: '例) 富戸ピラミッド'
+      .inputBox
+        .upper
+          .inputname boat/beach
+          .option 任意
+        = f.text_field :entry_method
+    .diving_time.inputBoxPair
+      .entry_time.inputBox
+        .upper
+          .inputname エントリー
+          .required 必須
+        = f.time_select :entry_time
+      .exit_time.inputBox
+        .upper
+          .inputname エキジット
+          .required 必須
+        = f.time_select :exit_time
+    .air.inputBoxPair
+      .entry_air.inputBox
+        .upper
+          .inputname 残圧in
+          .required 必須
+        = f.text_field :entry_air
+      .exit_air.inputBox
+        .upper
+          .inputname 残圧out
+          .required 必須
+        = f.text_field :exit_air
+
+  .equipmentInfo.smallWrap
+    %h2
+      装備
+    .suits_type.inputBox
+      .upper
+        .inputname スーツ
+        .required 必須
+      = f.collection_select :suits_id, Suits.all, :id, :name, {prompt: '---'}
+    .suits_thickness.inputBox
+      .upper
+        .inputname 厚さ
+        .required 必須
+      = f.text_field :suits_thickness
+    .weight.inputBox
+      .upper
+        .inputname 重り
+        .required 必須
+      = f.text_field :weight
+    .inputBoxPair
+      .inputBox
+        .upper
+          .inputname タンクの種類
+          .option 任意
+        = f.text_field :tank_type
+      .inputBox
+        .upper
+          .inputname タンクの容量
+          .option 任意
+        = f.text_field :tank_volume
+  = f.submit '登録', type: "submit", id: "create_log"
