@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function(){
   var arr_new_imgs = []       //imgファイルの配列
   var arr_current_imgs = []   //img_dataの配列
 
-  // divindmapのプレビュー表示------------------------------------
+  // divingmapのプレビュー表示------------------------------------
   $("#map_uploader").on("change", function(){
     flag_map = true
     file = this.files[0]
@@ -34,11 +34,9 @@ $(document).on('turbolinks:load', function(){
   if (document.URL.includes("logs") && document.URL.includes("edit")){
     $.each(gon.current_imgs, function(i, img_data){
       var URL = decodeURI(img_data.l_img_file.url)
-      if (!URL.includes("diving-map")){
-        show_previews(URL, i)
-        img_data.l_img_file.url = URL
-        arr_current_imgs.push(img_data)
-      }
+      show_previews(URL, i)
+      img_data.l_img_file.url = URL
+      arr_current_imgs.push(img_data)
     })
   }
 
@@ -73,7 +71,7 @@ $(document).on('turbolinks:load', function(){
   })
   
 
-  // formの送信-------------------------------------------------------------
+  // formの送信処理  -------------------------------------------------------------
   $("#logs_form").on("submit", function(e){
     e.preventDefault();
     var diving_map = $('.mapContainer__previewBox')
@@ -98,7 +96,7 @@ $(document).on('turbolinks:load', function(){
           buffer[i] = bin.charCodeAt(i);
         }
         var map_img = new File([buffer.buffer], "diving-map.jpeg", {type: "image/jpeg"}) // ファイルオブジェクト生成
-        formData.append("log[new_map]", map_img)
+        formData.append("log[diving_map]", map_img)
 
         send_formData(formData, url, action)
 
@@ -109,6 +107,16 @@ $(document).on('turbolinks:load', function(){
 
     // 関数：送信
     function send_formData(formData, url, action){
+      var d_1i = $("#log_d_date_1i")
+      var d_2i = $("#log_d_date_2i")
+      var d_3i = $("#log_d_date_3i")
+      d_date =     new Date(d_1i.get(0).value, d_2i.get(0).value, d_3i.get(0).value) 
+      entry_time = new Date(d_1i.get(0).value, d_2i.get(0).value, d_3i.get(0).value, $("#log_entry_time_4i").get(0).value, $("#log_entry_time_5i").get(0).value) 
+      exit_time  = new Date(d_1i.get(0).value, d_2i.get(0).value, d_3i.get(0).value, $("#log_exit_time_4i").get(0).value,  $("#log_exit_time_5i").get(0).value) 
+      formData.append("log[d_date]", d_date)
+      formData.append("log[entry_time]", entry_time)
+      formData.append("log[exit_time]", exit_time)
+
       arr_current_imgs.forEach(function(data) {
         formData.append("log[arr_remaining_ids][]", data.id)
       })
