@@ -2,99 +2,66 @@
   .header
     = render partial:  '/shareParts/header'
   .main
-    .placeInfo
-      .d_date.abreastBox
-        = @log.d_date
-      .weather.abreastBox / 天気: #{@log.weather.name}
-      .temp.abreastBox / 気温:  #{@log.temp} ℃  /
-      .address.abreastBox
-        = @log.address
-        
     .divingInfo
-      .left
-        .d_no
-          %span diving No:
-          = @log.d_no
-        .smallWrap
-          .w_temp.abreastBox
-            %span 水温:
-            = @log.w_temp
-            %span ℃
-          .visibility.abreastBox
-            %span / 透明度:
-            = @log.visibility
-            %span.unit [m]
-        .current.abreastBox
-          %span 流れ:
-          = @log.current
-
+      .userIcon
+        = image_tag @log.user.photo.url, alt: '写真', class: 'userIcon__photo'
+        = @log.user.nickname
         
-      .center
-        .center__point
-          = @log.point
-      .right
-        .right__entry_method
-          エントリー: #{@log.entry_method}
+      .row  #{@log.d_date}
+      .row  #{@log.address} 
+      .row 天気: #{@log.weather.name} / 気温: #{@log.temp} ℃
+      .row //
+      .row 生物・地形
+      .logInfo__living_things
+        = @log.living_thing
+      .row //
+      .row  水温: #{@log.w_temp} ℃ / 透明度: #{@log.visibility} [m]
+      .row  エントリー: #{@log.entry_method} / 流れ: #{@log.current}
+      %table(border=1)
+        %tr
+          %td
+          %td entry
+          %td exit
+        %tr
+          %td time
+          %td #{@log.entry_time.strftime('%H:%M')}
+          %td #{@log.exit_time.strftime('%H:%M')}
+        %tr
+          %td air
+          %td #{@log.entry_air} 
+          %td #{@log.exit_air}
+      
+      .row //
+      .m_label equipment
+      .rowスーツ：#{@log.suits.name}#{@log.suits_thickness} [mm]
+      .row ウエイト：#{@log.weight} [kg]
+      .row タンク： #{@log.tank_type} #{@log.tank_volume} [L]
 
-        .right__divingTime
-          .right__divingTime__entry.abreastBox
-            .s_label
-              %span entry time
-            = @log.entry_time.strftime('%H:%M')
-          .right__divingTime__exit.abreastBox
-            .s_label
-              %span exit time
-            = @log.exit_time.strftime('%H:%M')
-
-        .right__divingAir
-          .right__divingAir__entry.abreastBox
-            .s_label
-              %span air (entry)
-            = @log.entry_air
-            %span.unit [kg/cm3]
-          .right__divingair__exit.abreastBox
-            .s_label
-              %span air (exit)
-            = @log.exit_air
-            %span.unit [kg/cm3]
-
-    .mapInfo
-      = image_tag @log.living_thing_imgs.find_by(l_img_file: "diving-map.jpeg").l_img_file.to_s, alt: 'map', class: "mapInfo__img"
-      .previews__imgsContainer
-        - @log.living_thing_imgs.each do |img|
-          = image_tag img.l_img_file.to_s, alt: 'img', class: "previews__imgsContainer__img"
-
-    .logInfo
-      .logInfo__living_thing
-        .m_label
-          生物・地形
-        .logInfo__living_thing__text
-          = @log.living_thing
-
-      .logInfo__description
-        .m_label
-          記録
-        .logInfo__description__text
-          = @log.description
-
-    .equipmentInfo
-      .l_label
-        equipment
-      .equipmentInfo__itemBox
-        .equipmentInfo__itemBox__suits
-          %span
-            suits：
-          = @log.suits.name
-          = @log.suits_thickness
-          %span.unit [mm]
-        .equipmentInfo__itemBox__suits
-          %span /   weight：
-          = @log.weight
-          %span.unit [kg]
-        .equipmentInfo__itemBox__suits
-          %span /   tank：
-          = @log.tank_type
-          = @log.tank_volume
-          %span.unit [kg/cm3]
+    .logBox
+      .logBox__a No: #{@log.d_no} / #{@log.point}
+      .logBox__previews
+        - if @log.diving_map
+          = image_tag @log.diving_map.url, alt: 'map', class: 'logBox__previews__diving_map', id: 'diving_map'
+        - elsif @log.living_thing_imgs
+          = image_tag @log.living_thing_imgs[0].url alt: 'map', class: 'logBox__previews__diving_map', id: 'diving_map'     
+        - else
+          = image_tag 'image-regular.svg', alt: 'map', class: 'logBox__previews__diving_map', id: 'diving_map'
+        .logBox__previews__imgsContainer
+          - if @log.living_thing_imgs.length != 0
+            - @log.living_thing_imgs.each do |img|
+              = image_tag img.l_img_file.to_s, alt: 'img', class: "logBox__previews__imgsContainer__img_s"
+          - if @log.diving_map
+            = image_tag @log.diving_map.to_s, alt: 'img', class: "logBox__previews__imgsContainer__img_s"
+      .logBox__description
+        .description__text
+          = safe_join(@log.description.split("\n"),tag(:br))
+    .visitor
+      .visitor__good
+        = image_tag "grin-squint-regular.svg", alt: "いいね！", class:"nice"
+      .visitor__controller
+        .btn__good
+        .btn__comment
+      .visitor__comment
+        コメント
 
   .footer

@@ -1,22 +1,18 @@
 .usersshowWrap
-  .header
-    = render partial: '/shareParts/header'
+  = render partial: '/shareParts/header'
   .main
-    .sideBar_userInfo
-      .sideBar_userInfo__top
-        = image_tag @user.photo.to_s, alt: '写真', class: 'sideBar_userInfo__top__photo'
+    .userInfo
+      .userIcon
+        = image_tag @user.photo.url, alt: '写真', class: 'userIcon__photo'
         = @user.nickname
-      .license
-        ライセンス
-      .yearsOfExperience
-        経験年数：
-        = @yearsOfExperience
-      .address
-        生息地:
-        = @user.prefecture.name
+      .row ライセンス
+      .row 経験年数： #{@yearsOfExperience}
+      .row 生息地: #{@user.prefecture.name}
       .comment
-        コメント
-      = safe_join(@user.self_introduction.split("\n"),tag(:br))
+        = safe_join(@user.self_introduction.split("\n"),tag(:br))
+      - if @user.id == current_user.id
+        .edit_userInso
+          = link_to 'Edit', edit_user_path, class: 'btn_common'
 
     .logs
-      = render partial: '/shareParts/log', collection: @user_logs, as: 'log'
+      = render partial: '/logs/shareParts/log_container2', collection: @user_logs, as: 'log'

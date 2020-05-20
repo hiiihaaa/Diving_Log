@@ -1,0 +1,57 @@
+.logContainer{
+  background-color: #ffffff;
+  text-align: center;
+  width: 600px;
+  margin-bottom: 25px;
+
+  .userInfo{
+    display: flex;
+    padding: 15px 15px 0;
+    line-height: 40px;
+    &__photo{
+      max-height:  40px;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+  }
+
+  .logBox{
+    &__info{
+      display: flex;
+      padding: 0 15px 0;
+      &__a{
+        padding-right: 25px;
+        line-height:35px;
+        font-size: 10px;
+        color: #888888;
+      }
+      &__point{
+        color: #000000;
+        font-size: 18px;
+      }
+    }
+    &__previews{
+      &__diving_map{
+        width:600px;
+      }
+      &__imgsContainer{
+        display: flex;
+        overflow: auto;
+        padding: 0 10px 0;
+        &__img{
+          height:70px;
+          margin-right:5px;
+        }
+      }
+    }
+    &__description{
+      padding:10px;
+      &__text{
+      padding: 5px 15px 5px;
+      background-color: #cceeff;
+      text-align: left;
+      border-radius: 5px;
+      }
+    }
+  }
+}

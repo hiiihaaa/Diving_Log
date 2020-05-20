@@ -1,0 +1,37 @@
+.logContainer
+  = link_to show_user_path(log.user.id), class: 'userInfo' do
+    = image_tag log.user.photo.to_s, alt: 'photo', class: 'userInfo__photo'
+    = log.user.nickname
+
+  = link_to log_path(log.id), class: "logBox" do
+    .logBox__info
+      .logBox__info__a #{log.d_date} / #{log.weather.name} / 水温:  #{log.w_temp} ℃ / #{log.address}
+      .logBox__info__point #{log.point}
+
+    .logBox__previews
+      - if log.diving_map
+        = image_tag log.diving_map.url, alt: 'map', class: 'logBox__previews__diving_map', id: 'diving_map'
+      - elsif log.living_thing_imgs
+        = image_tag log.living_thing_imgs[0].url alt: 'map', class: 'logBox__previews__diving_map', id: 'diving_map'     
+      - else
+        = image_tag 'image-regular.svg', alt: 'map', class: 'logBox__previews__diving_map', id: 'diving_map'
+        
+      .logBox__previews__imgsContainer#imgsContainer
+        - if log.living_thing_imgs.length != 0
+          - log.living_thing_imgs.each do |img|
+            = image_tag img.l_img_file.to_s, alt: 'img', class: "logBox__previews__imgsContainer__img"
+        - if log.diving_map
+          = image_tag log.diving_map.to_s, alt: 'img', class: "logBox__previews__imgsContainer__img"
+    .logBox__description
+      .logBox__description__text
+        = safe_join(log.description.split("\n"),tag(:br))
+  .visitor
+    .visitor__good
+      いいね！
+    .visitor__controller
+      .btn__good
+      .btn__comment
+    .visitor__comment
+      コメント
+    
+      

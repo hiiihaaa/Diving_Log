@@ -1,6 +1,8 @@
 .inputBoxPair{
   display: flex;
 }
+
+// フォーム
 .inputBox{
   padding: 15px;
   .upper{
@@ -20,8 +22,42 @@
       margin-left: 12px;
     }
   }
+  .input_area{
+    padding: 0 5px 0;
+  }
 }
 
+// ヘッダーの固定
+.share_header{
+  width: 100%;
+  position: fixed;
+}
+
+// userアイコン
+.userIcon{
+  display: flex;
+  color: #ffffff;
+  line-height: 40px;
+  &__photo{
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+  }
+}
+
+// ボタン
+.btn_common{
+  display: inline-block;
+  height: 30px;
+  padding: 2px 10px 2px;
+  line-height: 25px;
+  border: solid 2px #ccccff;
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 3px;
+}
+
+// ラベル
 .l_label{
   font-weight: bold;
   font-size: 20px;
@@ -30,7 +66,8 @@
   font-weight: bold;
   font-size: 15px;
 }
-.unit{
-  font-size: 14px;
-  color: #666666;
+
+// 良いね
+.nice{
+  height:20px;
 }
