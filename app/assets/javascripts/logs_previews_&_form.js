@@ -32,7 +32,7 @@ $(document).on('turbolinks:load', function(){
 
   // <logs#edit>既存img_dataの配列を作成-----------------------------------------
   if (document.URL.includes("logs") && document.URL.includes("edit")){
-    $.each(gon.current_imgs, function(i, img_data){
+    $.each(gon.imgs, function(i, img_data){
       var URL = decodeURI(img_data.l_img_file.url)
       show_previews(URL, i)
       img_data.l_img_file.url = URL

@@ -22,12 +22,16 @@ class LogsController < ApplicationController
 
   def show
     @log = Log.find(params[:id])
+    gon.log = @log
+    gon.imgs = @log.living_thing_imgs
+
   end
 
   def edit
     @log = Log.find(params[:id])
-    gon.current_imgs = @log.living_thing_imgs
-    gon.log_imgs = @log
+    gon.imgs = @log.living_thing_imgs
+    gon.log = @log
+
   end
 
   def update

@@ -15,20 +15,20 @@
           .upper
             .inputname ニックネーム
             .required 必須
-          = f.text_field :nickname
-      
+          = f.text_field :nickname, class: "input_area"
+
         .inputBox
           .upper
             .inputname e-mail
             .required 必須
-          = f.email_field :email, autofocus: true, autocomplete: "email"
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "input_area"
 
       .smallWrap
         .inputBox
           .upper
             .inputname 自己紹介
             .option 任意
-          = f.text_area :self_introduction
+          = f.text_area :self_introduction, class: "input_area"
         .inputBox
           .upper
             .inputname ダイビングを始めた時期
@@ -46,7 +46,7 @@
             = f.label :password
             - if @minimum_password_length
               %em
-                (#{@minimum_password_length} characters minimum)
+                (#{@minimum_password_length} 文字以上で入力してください)
                 %br/
                 = f.password_field :password, autocomplete: "new-password"
 
@@ -58,5 +58,4 @@
             = f.password_field :password_confirmation, autocomplete: "new-password"
       .actions
         = f.submit class: "btn", value: "編集"
-    = render "users/shared/links"
-
+      = render "users/shared/links"

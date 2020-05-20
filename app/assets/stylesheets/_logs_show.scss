@@ -1,106 +1,54 @@
 .logsshowWrap{
-  background-color: #e0fff7;
-  .header{
-    height: 50px;
-  }
+  background-color: #e0fff3;
   .main{
-    background-color: #ffffff;
-    margin: 20px 50px 20px;
-    padding: 20px;
-    .abreastBox{
-      padding: 5px;
-      }
-    .placeInfo{
-      display: flex;
-    }
+    padding: 100px 0 0 275px;;
     .divingInfo{
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      padding-top: 10px;
-      .left{
-        width: 240px;
-        .d_no{
-          font-size: 20px;
-          font-weight: bold;
-        }
-        .smallWrap{
-          display: flex;
-        }
+      font-size:13px;
+      position: fixed;
+      left: 15px;
+      padding: 15px;
+      width:250px;
+      height: 100%;
+      background-color: #ffffff;
+      .userIcon{
+        color: #000000;
       }
-      .center{
+      .logInfo__living_things{
+        background-color: #cceeff;
+      }
+      td{
+        width: 60px;
         text-align: center;
-        padding:0 90px 0;
-        &__point{
-          font-weight: bold;
-          font-size: 30px;
-          text-align: center;
-        }
       }
-      .right{
-        width: 240px;
-        .abreastBox{
-          width: 110px;
-          padding: 5px;
+    }
+    .logBox{
+      width: 700px;
+      padding: 15px 0 20px;
+      background-color: #ffffff;
+      text-align: center;
+      &__previews{
+        &__diving_map{
+          height: 400px;
         }
-        .s_label{
-          line-height: 10px;
-          span{
-            background-color: #1096ff;
-            color: #ffffff;
-            font-size: 12px;
-            padding: 1px 4px 3px;
-            border-radius: 8px;
+        &__imgsContainer{
+          margin: 10px 50px 0;
+          &__img_s{
+            height: 70px;
           }
         }
-        &__divingTime{
-          display: flex;
-        }
-        &__divingAir{
-          display: flex;
-        }
       }
-
-    }
-
-    .mapInfo{
-      text-align: center;
-      &__img{
-        height: 500px;
+      .description{
+        margin: 10px 50px 0;
+        background-color: #cceeff;
+        border-radius: 5px;
       }
-      .previews__imgsContainer{
-        display: flex;
-        overflow: auto;
-        &__img{
-          height:70px;
-          margin-right:5px;
+      .visitor{
+        
+        &__comment{
+          width: 600px;
         }
       }
     }
-    .logInfo{
-      padding-top: 20px;
-      &__living_thing{
-        padding: 10px;
-        &__text{
-          text-decoration: underline;
-        }
-      }
-      &__description{
-        padding: 10px;
-        &__text{
-          text-decoration: underline;
-        }
-      }
-    }
-    .equipmentInfo{
-      border-top: solid 1px #cccccc;
-      padding-top: 20px;
-      &__itemBox{
-        padding: 10px 20px 0;
-        display: flex;
-      }
-    }
-  
   }
   .footer{
     height: 50px;

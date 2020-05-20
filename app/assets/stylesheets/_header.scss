@@ -1,7 +1,7 @@
 .share_header{
   background-color: #0000ff;
   .upper{
-    padding: 5px;
+    padding-top: 5px;
     text-align: center;
     &__title{
       color: #ffffff;
@@ -13,17 +13,20 @@
   }
   .lower{
     padding-bottom: 10px;
-    justify-content: space-around;
+    justify-content: space-between;
     display: flex;
-    &__header_btn{
-      display: block;
-      padding: 3px;
-      border: solid 2px #ccccff;
-      line-height: 12px;
-      background-color: #ffffff;
-      color: #000000;
-      border-radius: 3px;
-
+    &__left{
+      position: relative;
+      left: 50px;
+      display: flex;
+      line-height: 40px;
+      .userIcon{
+        padding: 0 20px 0;
+      }
+    }
+    &__right{
+      position: relative;
+      right: 100px;
     }
   }
 }

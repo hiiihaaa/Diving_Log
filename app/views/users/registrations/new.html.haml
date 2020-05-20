@@ -7,33 +7,36 @@
           = f.label :photo, class: 'upper', for: 'photo_uploader' do
             .upper アイコンの選択
             = f.file_field :photo, id: 'photo_uploader'
-            = image_tag "user-circle-solid.svg", alt: "", class: "preview__icon"
+            - if @user.photo.present?
+              = image_tag @user.photo.to_s, alt: "", class: "preview__icon"
+            - else
+              = image_tag "user-circle-solid.svg", alt: "", class: "preview__icon"
         .inputBox
           .upper
             .inputname ニックネーム
             .required 必須
-          = f.text_field :nickname
-      
+          = f.text_field :nickname, class: "input_area"
+
         .inputBox
           .upper
             .inputname e-mail
             .required 必須
-          = f.email_field :email, autofocus: true, autocomplete: "email"
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "input_area"
 
       .smallWrap
         .inputBox
           .upper
             .inputname 自己紹介
             .option 任意
-          = f.text_area :self_introduction
+          = f.text_area :self_introduction, class: "input_area"
         .inputBox
           .upper
             .inputname ダイビングを始めた時期
             .option 任意
-          != sprintf(f.date_select(:s_diving, with_css_classes:'XXXXX', use_month_numbers:true, discard_day: true, date_separator:'%s'), "年 ") + "月" 
+          != sprintf(f.date_select(:s_diving, with_css_classes:'', use_month_numbers:true, discard_day: true, date_separator:'%s'), "年 ") + "月" 
         .inputBox
           .upper
-            .inputname お住まい
+            .inputname 生息地
             .option 任意
           = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: '---'}, {class: ''}
 
@@ -43,7 +46,7 @@
             = f.label :password
             - if @minimum_password_length
               %em
-                (#{@minimum_password_length} characters minimum)
+                (#{@minimum_password_length} 文字以上で入力してください)
                 %br/
                 = f.password_field :password, autocomplete: "new-password"
 
@@ -54,5 +57,5 @@
             %br/
             = f.password_field :password_confirmation, autocomplete: "new-password"
       .actions
-        = f.submit class: "btn", value: "登録"
-    = render "users/shared/links"
+        = f.submit class: "btn", value: "編集"
+      = render "users/shared/links"
