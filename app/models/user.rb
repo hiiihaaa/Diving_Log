@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :logs
+  has_many :likes, dependent: :destroy
   mount_uploader :photo, PhotoUploader
   
   extend ActiveHash::Associations::ActiveRecordExtensions
