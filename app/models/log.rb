@@ -6,6 +6,7 @@ class Log < ApplicationRecord
 
   has_many   :likes, dependent: :destroy
   has_many   :goo_users, through: :likes, source: :user
+  has_many   :comments, dependent: :destroy
   belongs_to :user
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -24,5 +25,9 @@ class Log < ApplicationRecord
 
   def goo?(user)
     goo_users.include?(user)
+  end
+
+  def pos_come(user, comment)
+    comments.create(user_id: user.id, comment_text: comment)
   end
 end
