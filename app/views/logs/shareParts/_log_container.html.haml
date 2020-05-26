@@ -32,6 +32,7 @@
       .btn__good
       .btn__comment
     .visitor__comment
-      コメント
+      = render partial: "comments/comment", collection: log.comments, as: 'comment'
+      = render "comments/post", log: log
     
       

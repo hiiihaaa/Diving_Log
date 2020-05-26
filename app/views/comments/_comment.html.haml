@@ -1,0 +1,8 @@
+.comment
+  .comment__left
+    = image_tag comment.user.photo.to_s, alt: "", class: "user_img"
+  .comment__right
+    .nickname
+      = comment.user.nickname
+    .text
+      = comment.comment_text

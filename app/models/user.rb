@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :logs
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
   mount_uploader :photo, PhotoUploader
   
   extend ActiveHash::Associations::ActiveRecordExtensions
