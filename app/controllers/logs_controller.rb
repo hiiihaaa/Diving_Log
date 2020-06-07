@@ -1,7 +1,7 @@
 class LogsController < ApplicationController
   before_action :user_dummy
   def index
-    @logs = Log.all
+    @logs = Log.all.order(id: "DESC")
   end
 
   def new

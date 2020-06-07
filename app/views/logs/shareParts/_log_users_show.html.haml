@@ -1,0 +1,10 @@
+.logContainer
+  = link_to log_path(log.id), class: "logBox" do
+    .logBox__info
+      .logBox__info__s #{log.d_date} / #{log.weather.name} / 水温:  #{log.w_temp} ℃ / #{log.address}
+      .logBox__info__point #{log.point}
+    =render "logs/shareParts/sub_main", log: log
+
+  = render "logs/shareParts/sub_visitor", log: log
+    
+      

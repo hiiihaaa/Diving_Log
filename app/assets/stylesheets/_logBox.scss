@@ -1,0 +1,122 @@
+.logContainer{
+  background-color: #ffffff;
+  margin-bottom: 40px;
+  .logBox{
+    width: 700px;
+    padding: 15px 0 20px;
+    color: #000000;
+    &__info{
+      display: flex;
+      &__s{
+        padding: 2px 10px 0;
+        font-size: 12px;
+        color: #999999;
+      }
+      &__point{
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 12px;
+      }
+    }
+    &__previews{
+      &__diving_map{
+        height: 400px;
+      }
+      &__imgsContainer{
+        margin: 0 50px 0;
+        padding-bottom: 10px;
+        &__img_s{
+          height: 70px;
+        }
+      }
+    }
+    &__description{
+      padding:10px 30px;
+      &__text{
+      padding: 5px 20px;
+      background-color: #cceeff;
+      text-align: left;
+      border-radius: 5px;
+      }
+    }
+  }
+  .likes{
+    padding: 0 20px;
+    &__Box{
+      font-size: 15px;
+      display: flex;
+      border: none;
+      background-color: #ffffff;
+      &__img{
+        height:20px;
+        padding: 0 10px 0 30px;
+      }
+    }
+  }
+  .input{
+    &__comment{
+      border: none;
+      display: flex;
+      margin: auto;
+      background-color: #ffffff;
+      &__icon{
+        height: 20px;
+        padding-right: 5px;
+      }
+      &__text{
+        font-size: 12px;
+        line-height:20px;
+      }
+    }
+  }
+  .post{
+    padding: 10px 25px 0;
+    &__textarea{
+      padding: 5px 15px;
+      width: 100%;
+      border: solid 1px #999999;
+      border-radius: 5px;
+    }
+  }
+  .comment{
+    padding: 0 15px 10px;
+    &__Box{
+      background-color: #eeffff;
+      margin:10px;
+      padding: 0 5px 5px;
+      border-radius: 5px;
+      text-align:left;
+      font-size: 12px; 
+      display: flex;
+      justify-content: space-between;
+      &__main{
+        display: flex;
+        &__text{
+          padding-top: 10px;
+        }
+
+        .userIcon{
+          line-height: 30px;
+          padding: 5px 0 0 10px;
+          width: 120px;
+          &__photo{
+            height: 30px;
+          }
+          &__nickname{
+            color: #999999;
+          }
+        }
+      }
+      &__option{
+        .btn_come_delete{
+          margin: 5px 10px 0;
+        }
+      }
+ 
+    }
+    &__Box__text{
+      padding-top: 8px;
+    }
+  }
+}
+

@@ -1,11 +1,12 @@
 - if log.goo?(current_user)
   = form_with(model: log.likes.find_by(user_id: current_user.id), method: :delete, remote: true) do |f|
-    = button_tag do
-      いいね！
-      = content_tag :span, "#{log.likes_count}"
+    = button_tag(class: "likes__Box") do
+      = image_tag "grin-squint-regular.svg", alt: "いいね！", class: "likes__Box__img"
+      = log.likes_count
 - else
   = form_with(model: log.likes.build, remote: true) do |f|
-    %div= hidden_field_tag :log_id, log.id
-    = button_tag do
-      いいね！
-      = content_tag :span, "#{log.likes_count}"
+    .send_value
+      = hidden_field_tag :log_id, log.id
+    = button_tag(class: "likes__Box") do
+      = image_tag "grin-squint-regular.svg", alt: "いいね！", class: "likes__Box__img"
+      = log.likes_count

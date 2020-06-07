@@ -1,5 +1,8 @@
 .share_header{
   background-color: #0000ff;
+  width: 100%;
+  position: fixed;
+  z-index: 3;
   .upper{
     padding-top: 5px;
     text-align: center;
@@ -12,21 +15,22 @@
     }
   }
   .lower{
-    padding-bottom: 10px;
+    padding-bottom: 5px;
     justify-content: space-between;
     display: flex;
     &__left{
       position: relative;
-      left: 50px;
+      left: 80px;
       display: flex;
       line-height: 40px;
       .userIcon{
         padding: 0 20px 0;
+        color: #ffffff;
       }
     }
     &__right{
       position: relative;
-      right: 100px;
+      right: 150px;
     }
   }
 }

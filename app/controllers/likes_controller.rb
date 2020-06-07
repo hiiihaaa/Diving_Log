@@ -7,7 +7,7 @@ class LikesController < ApplicationController
         @log.goo(current_user)
         @log.reload
         respond_to do |format|
-          format.html {redirect_to request.referrer || root_url}
+          format.html { redirect_to request.referrer || root_url }
           format.js
         end
       end

@@ -1,0 +1,12 @@
+.likes
+  = render "likes/like", log: log
+.input
+  - if log.user != current_user
+    = button_tag(class: "input__comment", data: {logid: "#{log.id}"}) do
+      = image_tag "comment-alt-regular.svg", alt: "コメント", class: "input__comment__icon"
+      .input__comment__text コメント
+.post{id: "post_log#{log.id}", data:{logid: log.id}}
+.comment{id: "comment_log#{log.id}", data:{logid: log.id}}
+  = render partial: "comments/comment", collection: log.comments.includes(:user).order(id: 'desc'), as: 'comment' 
+
+  

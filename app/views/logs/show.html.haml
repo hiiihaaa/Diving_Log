@@ -1,67 +1,45 @@
 .logsshowWrap
-  .header
-    = render partial:  '/shareParts/header'
+  = render '/shareParts/header', user: current_user
   .main
     .divingInfo
-      .userIcon
-        = image_tag @log.user.photo.url, alt: '写真', class: 'userIcon__photo'
-        = @log.user.nickname
-        
-      .row  #{@log.d_date}
-      .row  #{@log.address} 
-      .row 天気: #{@log.weather.name} / 気温: #{@log.temp} ℃
-      .row //
-      .row 生物・地形
-      .logInfo__living_things
-        = @log.living_thing
-      .row //
-      .row  水温: #{@log.w_temp} ℃ / 透明度: #{@log.visibility} [m]
-      .row  エントリー: #{@log.entry_method} / 流れ: #{@log.current}
-      %table(border=1)
-        %tr
-          %td
-          %td entry
-          %td exit
-        %tr
-          %td time
-          %td #{@log.entry_time.strftime('%H:%M')}
-          %td #{@log.exit_time.strftime('%H:%M')}
-        %tr
-          %td air
-          %td #{@log.entry_air} 
-          %td #{@log.exit_air}
+      = render "users/shareParts/userBox", user: @log.user
+      .divingInfo__detail
+        .row  #{@log.d_date}
+        .row  #{@log.address} 
+        .row 天気: #{@log.weather.name} / 気温: #{@log.temp} ℃
+        .row  水温: #{@log.w_temp} ℃ / 透明度: #{@log.visibility} [m]
+        .row  エントリー: #{@log.entry_method} / 流れ: #{@log.current}
+        %table(border=1)
+          %tr
+            %td
+            %td entry
+            %td exit
+          %tr
+            %td time
+            %td #{@log.entry_time.strftime('%H:%M')}
+            %td #{@log.exit_time.strftime('%H:%M')}
+          %tr
+            %td air
+            %td #{@log.entry_air} 
+            %td #{@log.exit_air}
+
+      .divingInfo__living_things
+        .m_label 生物・地形
+        .divingInfo__living_things__s
+          = @log.living_thing
+
       
-      .row //
-      .m_label equipment
-      .rowスーツ：#{@log.suits.name}#{@log.suits_thickness} [mm]
-      .row ウエイト：#{@log.weight} [kg]
-      .row タンク： #{@log.tank_type} #{@log.tank_volume} [L]
+      .divingInfo__equipment
+        .m_label 装備
+        .row スーツ ：#{@log.suits.name}  #{@log.suits_thickness} [mm]
+        .row ウエイト：#{@log.weight} [kg]
+        .row タンク ： #{@log.tank_type} #{@log.tank_volume} [L]
 
     .logBox
-      .logBox__a No: #{@log.d_no} / #{@log.point}
-      .logBox__previews
-        - if @log.diving_map
-          = image_tag @log.diving_map.url, alt: 'map', class: 'logBox__previews__diving_map', id: 'diving_map'
-        - elsif @log.living_thing_imgs
-          = image_tag @log.living_thing_imgs[0].url alt: 'map', class: 'logBox__previews__diving_map', id: 'diving_map'     
-        - else
-          = image_tag 'image-regular.svg', alt: 'map', class: 'logBox__previews__diving_map', id: 'diving_map'
-        .logBox__previews__imgsContainer
-          - if @log.living_thing_imgs.length != 0
-            - @log.living_thing_imgs.each do |img|
-              = image_tag img.l_img_file.to_s, alt: 'img', class: "logBox__previews__imgsContainer__img_s"
-          - if @log.diving_map
-            = image_tag @log.diving_map.to_s, alt: 'img', class: "logBox__previews__imgsContainer__img_s"
-      .logBox__description
-        .description__text
-          = safe_join(@log.description.split("\n"),tag(:br))
-    .visitor
-      .visitor__good
-        = image_tag "grin-squint-regular.svg", alt: "いいね！", class:"nice"
-      .visitor__controller
-        .btn__good
-        .btn__comment
-      .visitor__comment
-        コメント
+      .logContainer{id: "log-#{@log.id}"}
+        .logBox__info
+          .logBox__info__no No: #{@log.d_no}
+          .logBox__info__point #{@log.point}
+        = render "/logs/shareParts/sub_main", log: @log
 
-  .footer
+        = render "logs/shareParts/sub_visitor", log: @log

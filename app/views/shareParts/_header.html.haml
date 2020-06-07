@@ -4,10 +4,10 @@
   .lower
     - if user_signed_in?
       .lower__left
-        = link_to show_user_path(current_user.id), class: 'userIcon' do
-          = image_tag current_user.photo.url, alt: 'photo', class: 'userIcon__photo'
-          = current_user.nickname
+        = render "/users/shareParts/userBox", user: user
         = link_to "ログアウト", destroy_user_session_path, method: :delete, class:'btn_common', id: 'btn_logout'
+        - if @log && @log.user == current_user && (!request.url.include?("new") && !request.url.include?("edit"))
+          = link_to "編集", edit_log_path, class:'btn_common', id: 'btn_edit'
     - else
       = link_to "新規登録", new_user_registration_path, class:'btn_common', id: 'btn_signup'
       = link_to "ログイン", new_user_session_path, class:'btn_common', id: 'btn_login'

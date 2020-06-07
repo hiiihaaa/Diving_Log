@@ -29,7 +29,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def show
     @user = User.find(params[:id])
-    @user_logs = @user.logs.all
+    @user_logs = @user.logs.all.order(id: 'desc')
     if Date.today.month > @user.s_diving.month
       @yearsOfExperience = "#{Date.today.year - @user.s_diving.year} 年 #{Date.today.month - @user.s_diving.month} ヶ月"
     else

@@ -1,8 +1,13 @@
-.comment
-  .comment__left
-    = image_tag comment.user.photo.to_s, alt: "", class: "user_img"
-  .comment__right
-    .nickname
-      = comment.user.nickname
-    .text
-      = comment.comment_text
+.comment__Box
+  .comment__Box__main
+    = render "users/shareParts/userBox", user: comment.user
+    .comment__Box__main__text{id: "comment#{comment.id}"}
+      = safe_join(comment.comment_text.split("\n"),tag(:br))
+  .comment__Box__option
+    -if user_signed_in?
+      - if comment.user == current_user
+        = form_with(model: comment, method: :delete, url: comments_path, remote: true) do |f|
+          = hidden_field_tag :id, comment.id
+          = button_tag(class: "btn_come_delete") do
+            削除
+      -# .btn_come_edit{data: {commentid: comment.id}} 編集
