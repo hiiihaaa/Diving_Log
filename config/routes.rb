@@ -15,5 +15,9 @@ Rails.application.routes.draw do
 
   resources :logs
   resources :likes, only: [:create, :destroy]
-  resource  :comments, only: [:create, :patch, :destroy]
+  resource  :comments, only: [:create, :destroy] do
+    member do
+      get '/:id/edit:', to: 'comments#edit',   as: :edit
+    end
+  end
 end

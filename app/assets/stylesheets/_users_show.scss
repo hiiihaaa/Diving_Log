@@ -1,15 +1,15 @@
 .usersshowWrap{
-  background-color: #a0fff3;
+  background-color: #e0fff3;
   .main{
     padding: 100px 0 30px 275px;;
     .userInfo{
       position: fixed;
       left: 15px;
-      padding: 20px;
+      padding: 0 20px;
       width:250px;
       height: 100%;
       background-color: #ffffff;
-      border-right: solid 5px #a0fff3;
+
       .comment{
         margin: 10px 0 20px;
         background-color: #cceeff;
@@ -17,8 +17,17 @@
         padding: 5px;
       }
       }
-    .logs{
-      width: 650px;
+    .logContainer{
+      width: 600px;
+      .logBox__info{
+        padding-top:10px;
+        &__s{
+          line-height: 20px;
+        }
+        &__point{
+          line-height: 20px;
+        }
+      }
     }
   }
 }

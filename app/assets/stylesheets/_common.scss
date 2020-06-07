@@ -27,17 +27,13 @@
   }
 }
 
-// ヘッダーの固定
-.share_header{
-  width: 100%;
-  position: fixed;
-}
 
 // userアイコン
 .userIcon{
   display: flex;
-  color: #ffffff;
+  color: #000000;
   line-height: 40px;
+  padding: 10px 0 0 10px;
   &__photo{
     height: 40px;
     margin-right: 10px;
@@ -47,10 +43,11 @@
 
 // ボタン
 .btn_common{
+  font-size: 14px;
   display: inline-block;
-  height: 30px;
-  padding: 2px 10px 2px;
-  line-height: 25px;
+  height: 25px;
+  padding: 2px 7px 2px;
+  line-height: 20px;
   border: solid 2px #ccccff;
   background-color: #ffffff;
   color: #000000;
@@ -70,4 +67,21 @@
 // 良いね
 .nice{
   height:20px;
+}
+
+
+// ログ
+.logBox__previews{
+  &__diving_map{
+    width:600px;
+  }
+  &__imgsContainer{
+    display: flex;
+    overflow: auto;
+    padding: 0 10px 0;
+    &__img{
+      height:70px;
+      margin-right:5px;
+    }
+  }
 }

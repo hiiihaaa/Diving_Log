@@ -1,5 +1,5 @@
 .userRegistrationWrap
-  = render partial: 'shareParts/header'
+  = render 'shareParts/header', user: current_user
   .main
     = form_with(model: @user, local: true) do |f|
       .smallWrap

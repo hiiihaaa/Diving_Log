@@ -10,4 +10,12 @@ class User < ApplicationRecord
   
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
+
+  def user_photo(user)
+    if user.photo
+      user.photo.to_s
+    else
+      "user-circle-solid.svg"
+    end
+  end
 end

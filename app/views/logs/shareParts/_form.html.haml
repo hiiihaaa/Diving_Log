@@ -15,7 +15,10 @@
           #btn_clear クリア
         .mapContainer__previewBox
           .mapContainer__previewBox__preview
-            = image_tag "", alt: "", class: "mapContainer__previewBox__preview__img", id: "diving_map"
+            - if @log.id
+              = image_tag @log.main_preview(@log), alt: "", class: "mapContainer__previewBox__preview__img", id: "diving_map"
+            - else
+              = image_tag "", alt: "", class: "mapContainer__previewBox__preview__img", id: "diving_map"
           %canvas.mapContainer__previewBox__canvas#map_canvas{width: "850", height: "550"}
     .inputBox
       .upper

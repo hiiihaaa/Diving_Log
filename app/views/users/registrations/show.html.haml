@@ -1,10 +1,9 @@
 .usersshowWrap
-  = render partial: '/shareParts/header'
+  = render '/shareParts/header', user: current_user
   .main
     .userInfo
       .userIcon
-        = image_tag @user.photo.url, alt: '写真', class: 'userIcon__photo'
-        = @user.nickname
+        = render "/users/shareParts/userBox", user: @user
       .row ライセンス
       .row 経験年数： #{@yearsOfExperience}
       .row 生息地: #{@user.prefecture.name}
@@ -14,5 +13,4 @@
         .edit_userInso
           = link_to 'Edit', edit_user_path, class: 'btn_common'
 
-    .logs
-      = render partial: '/logs/shareParts/log_container2', collection: @user_logs, as: 'log'
+    = render partial: '/logs/shareParts/log_users_show', collection: @user_logs, as: 'log'

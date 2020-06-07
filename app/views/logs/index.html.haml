@@ -1,7 +1,7 @@
 .logsindexWrap
-  = render partial: '/shareParts/header'
+  = render '/shareParts/header', user: current_user
   .main
     -if @logs
-      = render partial: '/logs/shareParts/log_container', collection: @logs, as: 'log'
+      = render partial: '/logs/shareParts/log_index', collection: @logs, as: 'log'
 
     

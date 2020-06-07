@@ -14,6 +14,15 @@ class Log < ApplicationRecord
   belongs_to_active_hash :weather
   belongs_to_active_hash :suits
 
+  def main_preview(log)
+    if log.diving_map
+      log.diving_map.url
+    elsif log.living_thing_imgs
+      log.living_thing_imgs[0].url
+    else
+      'image-regular.svg'
+    end
+  end
 
   def goo(user)
     likes.create(user_id: user.id)

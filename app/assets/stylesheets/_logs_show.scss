@@ -1,57 +1,44 @@
 .logsshowWrap{
   background-color: #e0fff3;
   .main{
-    padding: 100px 0 0 275px;;
+    width: 880px;
+    padding: 100px 0 10px 275px;;
     .divingInfo{
       font-size:13px;
       position: fixed;
       left: 15px;
       padding: 15px;
       width:250px;
-      height: 100%;
+      height: 80%;
       background-color: #ffffff;
-      .userIcon{
-        color: #000000;
+      &__detail{
+        padding: 10px 0 0;
       }
-      .logInfo__living_things{
-        background-color: #cceeff;
+      &__living_things{
+        padding-top: 15px;
+        &__s{
+          background-color: #cceeff;
+        }
+      }
+      &__equipment{
+        padding-top: 15px;
       }
       td{
         width: 60px;
         text-align: center;
       }
     }
-    .logBox{
-      width: 700px;
-      padding: 15px 0 20px;
-      background-color: #ffffff;
-      text-align: center;
-      &__previews{
-        &__diving_map{
-          height: 400px;
-        }
-        &__imgsContainer{
-          margin: 10px 50px 0;
-          &__img_s{
-            height: 70px;
-          }
-        }
+    .logBox__info{
+      padding-top: 10px;
+      &__no{
+        padding: 0 40px;
+        font-size: 20px;
+        font-weight: bold;
       }
-      .description{
-        margin: 10px 50px 0;
-        background-color: #cceeff;
-        border-radius: 5px;
-      }
-      .visitor{
-        
-        &__comment{
-          width: 600px;
-        }
+      &__point{
+        padding: 0;
+        line-height: 30px;
       }
     }
   }
-  .footer{
-    height: 50px;
-  }
-
 }

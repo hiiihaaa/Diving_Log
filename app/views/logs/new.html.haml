@@ -1,5 +1,5 @@
 .logsnewWrap
   .header
-    = render partial:'/shareParts/header'
+    = render '/shareParts/header', user: current_user
   .main
     = render partial: '/logs/shareParts/form'

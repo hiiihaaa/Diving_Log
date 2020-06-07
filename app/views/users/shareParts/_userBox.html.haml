@@ -1,0 +1,4 @@
+= link_to show_user_path(user.id), class: 'userIcon' do
+  = image_tag user.user_photo(user), alt: 'photo', class: 'userIcon__photo'
+  .userIcon__nickname
+    = user.nickname
