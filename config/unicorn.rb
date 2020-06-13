@@ -5,7 +5,7 @@ pid "#{app_path}/tmp/pids/unicorn.pid"
 listen 3000                      
 stderr_path "#{app_path}/log/unicorn.stderr.log" 
 stdout_path "#{app_path}/log/unicorn.stdout.log"  
-timeout 60    
+timeout 300    
 preload_app true
 GC.respond_to?(:copy_on_write_friendly=) && GC.copy_on_write_friendly = true
 check_client_connection false
