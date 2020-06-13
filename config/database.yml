@@ -49,5 +49,5 @@ test:
 production:
   <<: *default
   database: Diving_Log_production
-  username: Diving_Log
-  password: <%= ENV['DIVING_LOG_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
