@@ -5,7 +5,8 @@ set :application, "Diving_Log"
 set :repo_url, "git@github.com:hiiihaaa/Diving_Log.git"
 
 # Default value for linked_dirs is []
-set :linked_dirs, fetch(:linked_dirs, []).push('config/master.key', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')  
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')  
+set :linked_files, fetch(:linked_files, []).push("config/master.key")
 
 set :rbenv_type, :user
 set :rbenv_ruby, '2.5.1' 
