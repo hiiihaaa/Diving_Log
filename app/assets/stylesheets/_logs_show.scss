@@ -1,15 +1,15 @@
 .logsshowWrap{
   background-color: #e0fff3;
   .main{
-    width: 880px;
-    padding: 100px 0 10px 275px;;
+    width: calc(100% - 250px);
+    padding: 100px 0 150px 275px;;
     .divingInfo{
       font-size:13px;
       position: fixed;
       left: 15px;
       padding: 15px;
       width:250px;
-      height: 80%;
+      height: 60%;
       background-color: #ffffff;
       &__detail{
         padding: 10px 0 0;
@@ -39,6 +39,9 @@
         padding: 0;
         line-height: 30px;
       }
+    }
+    .logContainer{
+
     }
   }
 }

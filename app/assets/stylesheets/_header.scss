@@ -18,9 +18,12 @@
     padding-bottom: 5px;
     justify-content: space-between;
     display: flex;
+    .btn_common{
+      margin-right:20px;
+    }
     &__left{
       position: relative;
-      left: 80px;
+      left: 100px;
       display: flex;
       line-height: 40px;
       .userIcon{
@@ -30,7 +33,7 @@
     }
     &__right{
       position: relative;
-      right: 150px;
+      right: 100px;
     }
   }
 }
