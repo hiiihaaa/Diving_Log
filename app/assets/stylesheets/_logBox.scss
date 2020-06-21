@@ -1,6 +1,7 @@
 .logContainer{
   background-color: #ffffff;
-  margin-bottom: 40px;
+  width:600px;
+  margin: 0 auto 40px;
   .logBox{
     width: 700px;
     padding: 15px 0 20px;
@@ -19,14 +20,19 @@
       }
     }
     &__previews{
+      text-align:center;
       &__diving_map{
-        height: 400px;
+        height: 387px;
       }
       &__imgsContainer{
         margin: 0 50px 0;
-        padding-bottom: 10px;
-        &__img_s{
-          height: 70px;
+        display: flex;
+        overflow: auto;
+        padding: 0 10px 0;
+        &__img{
+          height:70px;
+          margin-right:5px;
+
         }
       }
     }

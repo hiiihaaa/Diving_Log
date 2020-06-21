@@ -5,7 +5,7 @@
     - if log.living_thing_imgs.length != 0
       - log.living_thing_imgs.each do |img|
         = image_tag img.l_img_file.to_s, alt: 'img', class: "logBox__previews__imgsContainer__img"
-    - if log.diving_map
+    - if log.diving_map.url
       = image_tag log.diving_map.to_s, alt: 'img', class: "logBox__previews__imgsContainer__img"
 .logBox__description
   .logBox__description__text

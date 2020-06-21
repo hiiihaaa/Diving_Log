@@ -1,5 +1,4 @@
 class LogsController < ApplicationController
-  before_action :user_dummy
   def index
     @logs = Log.all.order(id: "DESC")
   end
@@ -12,10 +11,11 @@ class LogsController < ApplicationController
 
   def create
     @log = Log.new(log_params)
-
-    if @log.save && imgs_params[:arr_new_imgs]
-      imgs_params[:arr_new_imgs].each do |new_img|
-        @log.living_thing_imgs.create(log_id: @log.id, l_img_file: new_img)
+    if imgs_params[:arr_new_imgs]
+      if @log.save
+        imgs_params[:arr_new_imgs].each do |new_img|
+          @log.living_thing_imgs.create(log_id: @log.id, l_img_file: new_img)
+        end
       end
     end
   end
@@ -74,9 +74,5 @@ class LogsController < ApplicationController
 
   def imgs_params
     params.require(:log).permit({arr_remaining_ids: []}, {arr_new_imgs: []})
-  end
-  
-  def user_dummy
-    @user = User.new
   end
 end

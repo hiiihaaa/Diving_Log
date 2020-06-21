@@ -9,7 +9,7 @@
       .row 生息地: #{@user.prefecture.name}
       .comment
         = safe_join(@user.self_introduction.split("\n"),tag(:br))
-      - if @user.id == current_user.id
+      - if user_signed_in? &&  @user.id == current_user.id
         .edit_userInso
           = link_to 'Edit', edit_user_path, class: 'btn_common'
 

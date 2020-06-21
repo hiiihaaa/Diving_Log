@@ -1,13 +1,14 @@
 .usersshowWrap{
   background-color: #e0fff3;
   .main{
-    padding: 100px 0 30px 275px;;
+    width: calc(100% - 250px);
+    padding: 100px 0 150px 275px;;
     .userInfo{
       position: fixed;
       left: 15px;
       padding: 0 20px;
       width:250px;
-      height: 100%;
+      height: 60%;
       background-color: #ffffff;
 
       .comment{

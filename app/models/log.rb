@@ -9,16 +9,20 @@ class Log < ApplicationRecord
   has_many   :comments, dependent: :destroy
   belongs_to :user
 
+  validates :prefecture_id, presence: true
+  validates :address,       presence: true
+  validates :weather_id,    presence: true
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :weather
   belongs_to_active_hash :suits
 
   def main_preview(log)
-    if log.diving_map
+    if log.diving_map.url
       log.diving_map.url
-    elsif log.living_thing_imgs
-      log.living_thing_imgs[0].url
+    elsif log.living_thing_imgs[0].l_img_file.url
+      log.living_thing_imgs[0].l_img_file.url
     else
       'image-regular.svg'
     end

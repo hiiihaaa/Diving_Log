@@ -68,20 +68,3 @@
 .nice{
   height:20px;
 }
-
-
-// ログ
-.logBox__previews{
-  &__diving_map{
-    width:600px;
-  }
-  &__imgsContainer{
-    display: flex;
-    overflow: auto;
-    padding: 0 10px 0;
-    &__img{
-      height:70px;
-      margin-right:5px;
-    }
-  }
-}

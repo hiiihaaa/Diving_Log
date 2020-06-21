@@ -1,7 +1,7 @@
 .likes
   = render "likes/like", log: log
 .input
-  - if log.user != current_user
+  - if user_signed_in? && log.user != current_user
     = button_tag(class: "input__comment", data: {logid: "#{log.id}"}) do
       = image_tag "comment-alt-regular.svg", alt: "コメント", class: "input__comment__icon"
       .input__comment__text コメント
