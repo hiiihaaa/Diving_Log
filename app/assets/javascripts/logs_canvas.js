@@ -19,7 +19,7 @@ $(document).on('turbolinks:load', function(){
       cnv.on('mousedown', function(e){
         if (picture_switch == 1) {
           var d_entry = new Image();    //新規画像オブジェクト
-          $(d_entry).attr({src: "/assets/diving_entry.svg"});   //読み込みたい画像のパス
+          $(d_entry).attr({src: "/images/diving_entry.svg"});   //読み込みたい画像のパス
           ctx.drawImage(d_entry, e.offsetX-25, e.offsetY-25, 50, 50)
         }
       });
@@ -44,7 +44,7 @@ $(document).on('turbolinks:load', function(){
       cnv.on('mousedown', function(e){
         if (picture_switch == 3) {
           var d_exit = new Image();    //新規画像オブジェクト
-          $(d_exit).attr({src: "/assets/diving_exit.svg"}) ;   //読み込みたい画像のパス
+          $(d_exit).attr({src: "/images/diving_exit.svg"}) ;   //読み込みたい画像のパス
           ctx.drawImage(d_exit, e.offsetX-25, e.offsetY-25, 50, 50)
         }
       });
