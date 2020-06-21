@@ -12,8 +12,9 @@
       .lower__left
         = link_to "新規登録", new_user_registration_path, class:'btn_common', id: 'btn_signup'
         = link_to "ログイン", new_user_session_path, class:'btn_common', id: 'btn_login'
-    .lower__right
-      = link_to "投稿", new_log_path, class: 'btn_common', id: 'btn_post'
+    - if user_signed_in?
+      .lower__right
+        = link_to "投稿", new_log_path, class: 'btn_common', id: 'btn_post'
 
 
 
