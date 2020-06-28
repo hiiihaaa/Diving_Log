@@ -11,6 +11,8 @@ class User < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
 
+  validates :nickname, presence: true
+
   def user_photo(user)
     if user.photo
       user.photo.to_s
