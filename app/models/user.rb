@@ -12,6 +12,9 @@ class User < ApplicationRecord
   belongs_to_active_hash :prefecture
 
   validates :nickname, presence: true
+  validates :password, presence: true
+
+
 
   def user_photo(user)
     if user.photo

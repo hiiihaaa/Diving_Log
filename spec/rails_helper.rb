@@ -1,13 +1,13 @@
-require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../../config/environment', __FILE__) # このソースファイルと同ディレクトリにあるenvironment.rbをrequire?
 
 abort("The Rails environment is running in production mode!") if Rails.env.production?
+require 'spec_helper'
 require 'rspec/rails'
 require 'factory_bot'
 require 'devise'
-require 'capybara/rspec'
 require 'faker'
+# require 'capybara/rspec'
 
 
 begin
